@@ -58,7 +58,6 @@ before_script:
 
   # start wp-cli
   - echo "start WP CLI"
-  - cd public/
   - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
   - php wp-cli.phar --info
   - php wp-cli.phar core install --url=localhost:8000 --title=Test --admin_user=supervisor --admin_password=strongpassword --admin_email=d.remer@inpsyde.com
