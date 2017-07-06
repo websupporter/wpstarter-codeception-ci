@@ -1,0 +1,39 @@
+[Thu Jul  6 22:40:43 2017] PHP Fatal error:  Uncaught Dotenv\Exception\InvalidPathException: Unable to read the environment file at /var/www/html/wpstarter-codeception/.env. in /var/www/html/wpstarter-codeception/vendor/vlucas/phpdotenv/src/Loader.php:98
+Stack trace:
+#0 /var/www/html/wpstarter-codeception/vendor/vlucas/phpdotenv/src/Loader.php(75): Dotenv\Loader->ensureFileIsReadable()
+#1 /var/www/html/wpstarter-codeception/vendor/wecodemore/wpstarter/wpstarter/src/Env/Env.php(185): Dotenv\Loader->load()
+#2 /var/www/html/wpstarter-codeception/vendor/wecodemore/wpstarter/wpstarter/src/Helpers.php(29): WCM\WPStarter\Env\Env::load('/var/www/html/w...', '.env')
+#3 /var/www/html/wpstarter-codeception/public/wp-config.php(34): WCM\WPStarter\Helpers::settings('/var/www/html/w...', '.env')
+#4 /var/www/html/wpstarter-codeception/public/wordpress/wp-load.php(42): require_once('/var/www/html/w...')
+#5 /var/www/html/wpstarter-codeception/public/wordpress/wp-blog-header.php(13): require_once('/var/www/html/w...')
+#6 /var/www/html/wpstarter-codeception/public/index.p in /var/www/html/wpstarter-codeception/vendor/vlucas/phpdotenv/src/Loader.php on line 98
+[Thu Jul  6 22:40:43 2017] 127.0.0.1:52518 [500]: / - Uncaught Dotenv\Exception\InvalidPathException: Unable to read the environment file at /var/www/html/wpstarter-codeception/.env. in /var/www/html/wpstarter-codeception/vendor/vlucas/phpdotenv/src/Loader.php:98
+Stack trace:
+#0 /var/www/html/wpstarter-codeception/vendor/vlucas/phpdotenv/src/Loader.php(75): Dotenv\Loader->ensureFileIsReadable()
+#1 /var/www/html/wpstarter-codeception/vendor/wecodemore/wpstarter/wpstarter/src/Env/Env.php(185): Dotenv\Loader->load()
+#2 /var/www/html/wpstarter-codeception/vendor/wecodemore/wpstarter/wpstarter/src/Helpers.php(29): WCM\WPStarter\Env\Env::load('/var/www/html/w...', '.env')
+#3 /var/www/html/wpstarter-codeception/public/wp-config.php(34): WCM\WPStarter\Helpers::settings('/var/www/html/w...', '.env')
+#4 /var/www/html/wpstarter-codeception/public/wordpress/wp-load.php(42): require_once('/var/www/html/w...')
+#5 /var/www/html/wpstarter-codeception/public/wordpress/wp-blog-header.php(13): require_once('/var/www/html/w...')
+#6 /var/www/html/wpstarter-codeception/public/index.p in /var/www/html/wpstarter-codeception/vendor/vlucas/phpdotenv/src/Loader.php on line 98
+[Thu Jul  6 22:40:43 2017] 127.0.0.1:52522 [404]: /favicon.ico - No such file or directory
+[Thu Jul  6 22:40:57 2017] PHP Fatal error:  Uncaught Dotenv\Exception\InvalidPathException: Unable to read the environment file at /var/www/html/wpstarter-codeception/.env. in /var/www/html/wpstarter-codeception/vendor/vlucas/phpdotenv/src/Loader.php:98
+Stack trace:
+#0 /var/www/html/wpstarter-codeception/vendor/vlucas/phpdotenv/src/Loader.php(75): Dotenv\Loader->ensureFileIsReadable()
+#1 /var/www/html/wpstarter-codeception/vendor/wecodemore/wpstarter/wpstarter/src/Env/Env.php(185): Dotenv\Loader->load()
+#2 /var/www/html/wpstarter-codeception/vendor/wecodemore/wpstarter/wpstarter/src/Helpers.php(29): WCM\WPStarter\Env\Env::load('/var/www/html/w...', '.env')
+#3 /var/www/html/wpstarter-codeception/public/wp-config.php(34): WCM\WPStarter\Helpers::settings('/var/www/html/w...', '.env')
+#4 /var/www/html/wpstarter-codeception/public/wordpress/wp-load.php(42): require_once('/var/www/html/w...')
+#5 /var/www/html/wpstarter-codeception/public/wordpress/wp-blog-header.php(13): require_once('/var/www/html/w...')
+#6 /var/www/html/wpstarter-codeception/public/index.p in /var/www/html/wpstarter-codeception/vendor/vlucas/phpdotenv/src/Loader.php on line 98
+[Thu Jul  6 22:40:57 2017] 127.0.0.1:52550 [500]: / - Uncaught Dotenv\Exception\InvalidPathException: Unable to read the environment file at /var/www/html/wpstarter-codeception/.env. in /var/www/html/wpstarter-codeception/vendor/vlucas/phpdotenv/src/Loader.php:98
+Stack trace:
+#0 /var/www/html/wpstarter-codeception/vendor/vlucas/phpdotenv/src/Loader.php(75): Dotenv\Loader->ensureFileIsReadable()
+#1 /var/www/html/wpstarter-codeception/vendor/wecodemore/wpstarter/wpstarter/src/Env/Env.php(185): Dotenv\Loader->load()
+#2 /var/www/html/wpstarter-codeception/vendor/wecodemore/wpstarter/wpstarter/src/Helpers.php(29): WCM\WPStarter\Env\Env::load('/var/www/html/w...', '.env')
+#3 /var/www/html/wpstarter-codeception/public/wp-config.php(34): WCM\WPStarter\Helpers::settings('/var/www/html/w...', '.env')
+#4 /var/www/html/wpstarter-codeception/public/wordpress/wp-load.php(42): require_once('/var/www/html/w...')
+#5 /var/www/html/wpstarter-codeception/public/wordpress/wp-blog-header.php(13): require_once('/var/www/html/w...')
+#6 /var/www/html/wpstarter-codeception/public/index.p in /var/www/html/wpstarter-codeception/vendor/vlucas/phpdotenv/src/Loader.php on line 98
+[Thu Jul  6 22:40:57 2017] 127.0.0.1:52552 [404]: /favicon.ico - No such file or directory
+[Thu Jul  6 22:40:57 2017] 127.0.0.1:52554 [404]: /favicon.ico - No such file or directory
