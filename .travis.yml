@@ -58,6 +58,14 @@ before_script:
   - echo "DB_USER=root" >> .env
   - echo "DB_PASSWORD=" >> .env
 
+  # start wp-cli
+  - echo "start WP CLI"
+  - cd public/
+  - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+  - php wp-cli.phar --info
+  - php wp-cli.phar core install --url=localhost:8000 --title=Test --admin_user=supervisor --admin_password=strongpassword --admin_email=d.remer@inpsyde.com
+  - php wp-cli.phar theme activate twentyseventeen
+
 # Run main commands
 script:
   - vendor/bin/codecept run
