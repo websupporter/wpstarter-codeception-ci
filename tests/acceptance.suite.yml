@@ -12,5 +12,5 @@ modules:
     config:
             WebDriver:
                 url: 'http://localhost:8000/'
-                browser: 'chrome'
+                browser: 'firefox'
                 wait: 1 #seconds
