@@ -17,7 +17,7 @@ git:
 
 php:
   - 7.0
-sudo: false
+sudo: required
 
 before_install: phpenv config-rm xdebug.ini
 
@@ -42,17 +42,24 @@ before_script:
   - echo "start WP CLI"
   - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
   - php wp-cli.phar --info
-  - php wp-cli.phar core install --url=localhost:8081 --title=Test --admin_user=supervisor --admin_password=strongpassword --admin_email=d.remer@inpsyde.com
+  - php wp-cli.phar core install --url=localhost --title=Test --admin_user=supervisor --admin_password=strongpassword --admin_email=d.remer@inpsyde.com
   - php wp-cli.phar theme activate twentyseventeen
   - php wp-cli.phar post create --post_type=post --post_title='Hello Word' --post_content='Demo Content' --post_status=publish
 
   - wget -c -nc --retry-connrefused --tries=0 http://goo.gl/EoH85x -O selenium-server-standalone.jar
 
-  # start server
+  # start selenium
   - echo "Run selenium server - background process"
   - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
-  - echo "Run php in-built server - background process"
-  - nohup bash -c "php -S localhost:8081 2>&1 -t ./public &" && sleep 1; cat nohup.out
+
+  # start apache
+  - sudo apt-get install apache2
+  - sudo a2enmod actions
+  - sudo a2enmod rewrite
+  - echo "export PATH=/home/vagrant/.phpenv/bin:$PATH" | sudo tee -a /etc/apache2/envvars > /dev/null
+  - echo "$(cat tests/_data/.apache-phpenv)" | sudo tee /etc/apache2/conf.d/phpconfig > /dev/null
+  - echo "$(cat tests/_data/.apache-hostfile)" | sed -e "s,PATH,`pwd`/public,g" | sudo tee /etc/apache2/sites-available/default > /dev/null
+  - sudo service apache2 restart
 # Run main commands
 script:
   - vendor/bin/codecept run
@@ -62,7 +69,7 @@ script:
 #after_success:
 
 after_failure:
-  - wget http://localhost:8081
+  - wget http://localhost
   - cat tests/_output/FirstCest.homepage_test.fail.html
 
 # Tell Travis CI to monitor only 'master' branch
