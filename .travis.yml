@@ -46,7 +46,7 @@ before_script:
   - echo "start WP CLI"
   - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
   - php wp-cli.phar --info
-  - php wp-cli.phar core install --url=localhost:8000/public --title=Test --admin_user=supervisor --admin_password=strongpassword --admin_email=d.remer@inpsyde.com
+  - php wp-cli.phar core install --url=localhost:8000 --title=Test --admin_user=supervisor --admin_password=strongpassword --admin_email=d.remer@inpsyde.com
   - php wp-cli.phar theme activate twentyseventeen
 
   - wget -c -nc --retry-connrefused --tries=0 http://goo.gl/EoH85x -O selenium-server-standalone.jar
@@ -55,8 +55,9 @@ before_script:
   - echo "Run selenium server - background process"
   - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
   - echo "Run php in-built server - background process"
-  - ls -a
-  - nohup bash -c "php -S localhost:8000 2>&1 -t ./ &" && sleep 1; cat nohup.out
+  - cd public
+  - nohup bash -c "php -S localhost:8000 &" && sleep 1; cat nohup.out
+  - cd -
 
 # Run main commands
 script:
@@ -67,7 +68,7 @@ script:
 #after_success:
 
 after_failure:
-  - wget http://localhost:8000/public
+  - wget http://localhost:8000
   - cat tests/_output/FirstCest.homepage_test.fail.html
 
 # Tell Travis CI to monitor only 'master' branch
