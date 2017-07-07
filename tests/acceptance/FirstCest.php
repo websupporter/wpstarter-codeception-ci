@@ -18,6 +18,6 @@ class FirstCest {
 	public function homepage_test( AcceptanceTester $i ) {
 
 	    $i->amOnPage( '/' );
-	    $i->see( 'Test' );
+	    $i->see( 'Hello Word' );
 	}
 }

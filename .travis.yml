@@ -49,6 +49,7 @@ before_script:
   - php wp-cli.phar --info
   - php wp-cli.phar core install --url=localhost:8081 --title=Test --admin_user=supervisor --admin_password=strongpassword --admin_email=d.remer@inpsyde.com
   - php wp-cli.phar theme activate twentyseventeen
+  - php wp-cli.phar post create --post_type=post --post_title='Hello Word' --post_content='Demo Content' --post_status=publish
 
   - wget -c -nc --retry-connrefused --tries=0 http://goo.gl/EoH85x -O selenium-server-standalone.jar
 
