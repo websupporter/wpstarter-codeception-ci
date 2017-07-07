@@ -15,20 +15,14 @@ os:
 git:
   depth: 1
 
-# Define the php versions against we want to test our code
-php:
-    - 7.0
-# Run as sudo
-sudo: required
+php: 7
+sudo: false
 
-# Disable x-debug to speed up things
 before_install: phpenv config-rm xdebug.ini
 
-# Install packages those will be required during build
 install:
   - composer install --no-interaction
 
-# Prepare test environment
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
@@ -70,6 +64,7 @@ script:
 #after_success:
 
 after_failure:
+  - cat wget http://localhost:8000
   - cat tests/_output/FirstCest.homepage_test.fail.html
 
 # Tell Travis CI to monitor only 'master' branch
