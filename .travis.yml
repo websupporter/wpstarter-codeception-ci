@@ -18,9 +18,7 @@ git:
 # Define the php versions against we want to test our code
 php:
     - 7.0
-
-# We don't want to run linux commands as super user
-#false means Travis will run this in a container
+# Run as sudo
 sudo: required
 
 # Disable x-debug to speed up things
