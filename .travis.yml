@@ -55,6 +55,7 @@ before_script:
   - echo "DB_NAME=wordpress_test" >> .env
   - echo "DB_USER=root" >> .env
   - echo "DB_PASSWORD=" >> .env
+  - cat .env
 
   # start wp-cli
   - echo "start WP CLI"
