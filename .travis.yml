@@ -64,7 +64,7 @@ script:
 #after_success:
 
 after_failure:
-  - cat wget http://localhost:8000
+  - wget http://localhost:8000
   - cat tests/_output/FirstCest.homepage_test.fail.html
 
 # Tell Travis CI to monitor only 'master' branch
