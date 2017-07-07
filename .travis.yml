@@ -19,13 +19,9 @@ git:
 php:
     - 7.0
 
-matrix:
-  fast_finish: true
-
-
 # We don't want to run linux commands as super user
 #false means Travis will run this in a container
-sudo: false
+sudo: required
 
 # Disable x-debug to speed up things
 before_install: phpenv config-rm xdebug.ini
