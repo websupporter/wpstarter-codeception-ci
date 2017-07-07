@@ -56,9 +56,8 @@ before_script:
   - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
   - echo "Run php in-built server - background process"
   - cd public
-  - nohup bash -c "php -S localhost:8000 &" && sleep 1; cat nohup.out
+  - nohup bash -c "php -S localhost:8000 2>&1 -t ./ &" && sleep 1; cat nohup.out
   - cd -
-
 # Run main commands
 script:
   - vendor/bin/codecept run
