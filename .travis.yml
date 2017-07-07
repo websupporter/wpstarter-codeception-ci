@@ -48,9 +48,9 @@ before_script:
 
   # Create database
   - mysql -e 'CREATE DATABASE wordpress_db;' -uroot
-  - mysql -ve "CREATE USER 'wordpress_user'@'localhost' IDENTIFIED BY 'wordpress_db_password'"
-  - mysql -ve "GRANT ALL ON wordpress_db.* TO 'wordpress_user'@'localhost'"
-  - mysql -ve "FLUSH PRIVILEGES"
+  - mysql -ve "CREATE USER 'wordpress_user'@'localhost' IDENTIFIED BY 'wordpress_db_password'" -uroot
+  - mysql -ve "GRANT ALL ON wordpress_db.* TO 'wordpress_user'@'localhost'" -uroot
+  - mysql -ve "FLUSH PRIVILEGES" -uroot
 
   # create .env
   - echo "WORDPRESS_ENV=development" >> .env
