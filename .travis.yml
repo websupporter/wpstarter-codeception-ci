@@ -39,12 +39,6 @@ before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
-  - echo "Download selenium-server-standalone jar file"
-  - wget -c -nc --retry-connrefused --tries=0 http://goo.gl/EoH85x -O selenium-server-standalone.jar
-  - echo "Run selenium server - background process"
-  - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
-  - echo "Run php in-built server - background process"
-  - nohup bash -c "php -S localhost:8000 2>&1 -t ./public &" && sleep 1; cat nohup.out
 
   # Create database
   - mysql -e 'CREATE DATABASE wordpress_db;' -uroot
@@ -58,7 +52,6 @@ before_script:
   - echo "DB_NAME=wordpress_db" >> .env
   - echo "DB_USER=wordpress_user" >> .env
   - echo "DB_PASSWORD=wordpress_db_password" >> .env
-  - cat .env
 
   # start wp-cli
   - echo "start WP CLI"
@@ -67,6 +60,10 @@ before_script:
   - php wp-cli.phar core install --url=localhost:8000 --title=Test --admin_user=supervisor --admin_password=strongpassword --admin_email=d.remer@inpsyde.com
   - php wp-cli.phar theme activate twentyseventeen
 
+  # start servers
+  - wget -c -nc --retry-connrefused --tries=0 http://goo.gl/EoH85x -O selenium-server-standalone.jar
+  - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
+  - nohup bash -c "php -S localhost:8000 2>&1 -t ./public &" && sleep 1; cat nohup.out
 # Run main commands
 script:
   - vendor/bin/codecept run
