@@ -44,7 +44,7 @@ before_script:
   - echo "Run selenium server - background process"
   - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
   - echo "Run php in-built server - background process"
-  - nohup bash -c "php -S localhost:80 2>&1 -t ./public &" && sleep 1; cat nohup.out
+  - nohup bash -c "php -S localhost:8000 2>&1 -t ./public &" && sleep 1; cat nohup.out
 
   # Create database
   - mysql -e 'CREATE DATABASE wordpress_db;' -uroot
@@ -64,7 +64,7 @@ before_script:
   - echo "start WP CLI"
   - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
   - php wp-cli.phar --info
-  - php wp-cli.phar core install --url=localhost --title=Test --admin_user=supervisor --admin_password=strongpassword --admin_email=d.remer@inpsyde.com
+  - php wp-cli.phar core install --url=localhost:8000 --title=Test --admin_user=supervisor --admin_password=strongpassword --admin_email=d.remer@inpsyde.com
   - php wp-cli.phar theme activate twentyseventeen
 
 # Run main commands
