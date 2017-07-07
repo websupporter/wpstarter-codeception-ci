@@ -47,14 +47,16 @@ before_script:
   - nohup bash -c "php -S localhost:80 2>&1 -t ./public &" && sleep 1; cat nohup.out
 
   # Create database
-  - mysql -e 'CREATE DATABASE wordpress_test;' -uroot
+  - mysql -e 'CREATE DATABASE wordpress_db;' -uroot
+  - mysql-create-user wordpress_user wordpress_db_password
+  - mysql-grant-db wordpress_user wordpress_db
 
   # create .env
   - echo "WORDPRESS_ENV=development" >> .env
   - echo "DB_HOST=localhost" >> .env
-  - echo "DB_NAME=wordpress_test" >> .env
-  - echo "DB_USER=root" >> .env
-  - echo "DB_PASSWORD=" >> .env
+  - echo "DB_NAME=wordpress_db" >> .env
+  - echo "DB_USER=wordpress_user" >> .env
+  - echo "DB_PASSWORD=wordpress_db_password" >> .env
   - cat .env
 
   # start wp-cli
