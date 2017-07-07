@@ -22,6 +22,7 @@ sudo: false
 before_install: phpenv config-rm xdebug.ini
 
 install:
+  - mkdir public
   - composer install --no-interaction
 
 before_script:
