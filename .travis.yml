@@ -41,13 +41,13 @@ before_script:
   - echo "DB_NAME=wordpress_db" >> .env
   - echo "DB_USER=wordpress_user" >> .env
   - echo "DB_PASSWORD=wordpress_db_password" >> .env
-  - echo "WP_HOME=http://localhost:443" >> .env
+  - echo "WP_HOME=http://localhost:8081" >> .env
 
   # start wp-cli
   - echo "start WP CLI"
   - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
   - php wp-cli.phar --info
-  - php wp-cli.phar core install --url=localhost:443 --title=Test --admin_user=supervisor --admin_password=strongpassword --admin_email=d.remer@inpsyde.com
+  - php wp-cli.phar core install --url=localhost:8081 --title=Test --admin_user=supervisor --admin_password=strongpassword --admin_email=d.remer@inpsyde.com
   - php wp-cli.phar theme activate twentyseventeen
   - php wp-cli.phar post create --post_type=post --post_title='Hello Word' --post_content='Demo Content' --post_status=publish
 
@@ -57,7 +57,7 @@ before_script:
   - echo "Run selenium server - background process"
   - nohup bash -c "java -jar selenium-server-standalone.jar &" && sleep 1; cat nohup.out
   - echo "Run php in-built server - background process"
-  - nohup bash -c "php -S localhost:443 2>&1 -t ./public &" && sleep 1; cat nohup.out
+  - nohup bash -c "php -S localhost:8081 2>&1 -t ./public &" && sleep 1; cat nohup.out
 # Run main commands
 script:
   - vendor/bin/codecept run
@@ -67,7 +67,7 @@ script:
 #after_success:
 
 after_failure:
-  - wget http://localhost:443
+  - wget http://localhost:8081
   - cat tests/_output/FirstCest.homepage_test.fail.html
 
 # Tell Travis CI to monitor only 'master' branch
